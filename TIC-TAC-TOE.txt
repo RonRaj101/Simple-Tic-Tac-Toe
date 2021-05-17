@@ -1,0 +1,90 @@
+<--- TIC TAC TOE PseudoCode --->
+
+DECLARE gameboard : ARRAY[0:8] OF CHAR
+DECLARE turn_of : CHAR
+DECLARE num_of_turns,position : INTEGER
+DECLARE game_over : BOOLEAN
+
+turn_of <-- 'X'
+num_of_turns <-- 0
+game_over <-- FALSE
+
+FOR num_of_turns <-- 0 to 8
+
+    OUTPUT "Turn For " & turn_of
+
+    REPEAT
+        OUTPUT "Enter Position of Cell (1 to 9)"
+        INPUT position
+        position <-- position - 1
+
+        IF gameboard[position] <> ' ' THEN
+            OUTPUT "Cell is Already Occupied Choose Another Position"    
+        END IF
+    UNTIL gameboard[position] = ' ' 
+
+    gameboard[position] <-- turn_of
+    num_of_turns <-- num_of_turns + 1
+
+    IF num_of_turns >= 5 AND game_over = FALSE THEN
+
+            IF gameboard[6] = gameboard[7] AND gameboard[7] = gameboard[8] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE
+
+            ELSE IF gameboard[3] = gameboard[4] AND gameboard[4] = gameboard[5] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE     
+
+            ELSE IF gameboard[0] = gameboard[1] AND gameboard[1] = gameboard[2] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE
+
+            ELSE IF gameboard[0] = gameboard[3] AND gameboard[3] = gameboard[6] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE
+
+            ELSE IF gameboard[1] = gameboard[4] AND gameboard[4] = gameboard[7] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE
+
+            ELSE IF gameboard[2] = gameboard[5] AND gameboard[5] = gameboard[8] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE  
+
+            ELSE IF gameboard[6] = gameboard[4] AND gameboard[4] = gameboard[2] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE
+
+            ELSE IF gameboard[0] = gameboard[4] AND gameboard[4] = gameboard[8] THEN
+                OUTPUT "Game Over!"
+                OUTPUT turn_of & " Is The Winner"
+                game_over <-- TRUE              
+            
+            ELSE IF num_of_turns = 9
+                OUTPUT "Game Tied!"
+                game_over <-- TRUE 
+
+            END IF
+    END IF      
+
+    IF turn_of = 'X' THEN
+        turn_of <-- 'O'
+    ELSE
+        turn_of <-- 'X'
+    END IF          
+
+NEXT num_of_turns        
+
+    
+      
+    
+
+
